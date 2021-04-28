@@ -30,7 +30,7 @@ public class FavorisFragment extends Fragment {
     public ArrayList<ProfilAdopteur> dataProfilAdopteurs(){
         ArrayList<ProfilAdopteur> profilAdopteurs = new ArrayList<>();
 
-        ProfilAdopteur p = new ProfilAdopteur("Sara","Turki",new GregorianCalendar(2000,4,12),"sara.turki@gmail.com","S+U=love");
+        ProfilAdopteur p = new ProfilAdopteur("Laetitia","Kamwag",new GregorianCalendar(2000,4,12),"aurelie.l@outlook.com","depression",R.drawable.ic_dashboard_black_24dp);
         p.ajouterAnimal(animaux.get(0));
         p.ajouterAnimal(animaux.get(1));
         profilAdopteurs.add(p);
@@ -38,18 +38,18 @@ public class FavorisFragment extends Fragment {
         return profilAdopteurs;
     }
 
-    public ArrayList<ProfilAdopteur> dataProfilAdoptants(){
-        ArrayList<ProfilAdopteur> profilAdopteurs = new ArrayList<>();
+    public ArrayList<ProfilAdoptant> dataProfilAdoptants(){
+        ArrayList<ProfilAdoptant> profilAdoptants = new ArrayList<>();
 
-        ProfilAdopteur p = new ProfilAdopteur("Sara","Turki",new GregorianCalendar(2000,4,12),"sara.turki@gmail.com","S+U=love");
+        ProfilAdoptant p = new ProfilAdoptant("Sara","Turki",new GregorianCalendar(2000,4,12),"sara.turki@gmail.com","S+U=love",R.drawable.ic_dashboard_black_24dp);
         p.ajouterAnimal(animaux.get(0));
         p.ajouterAnimal(animaux.get(1));
-        profilAdopteurs.add(p);
-        p = new ProfilAdopteur("Clément","Phung",new GregorianCalendar(2000,4,12),"clement.phung@hotmail.fr","ilovelaetitia");
+        profilAdoptants.add(p);
+        p = new ProfilAdoptant("Clément","Phung",new GregorianCalendar(2000,4,12),"clement.phung@hotmail.fr","ilovelaetitia",R.drawable.ic_dashboard_black_24dp);
         p.ajouterAnimal(animaux.get(6));
         p.ajouterAnimal(animaux.get(1));
-        profilAdopteurs.add(p);
+        profilAdoptants.add(p);
 
-        return profilAdopteurs;
+        return profilAdoptants;
     }
 }
