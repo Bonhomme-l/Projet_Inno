@@ -14,9 +14,6 @@ public class ProfilAnimalActivity  extends AppCompatActivity {
         String message = i.getStringExtra("Mess");//récuperer le message
         ((TextView)findViewById(R.id.prenom_profilanimal)).setText(message);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
     }
 
 

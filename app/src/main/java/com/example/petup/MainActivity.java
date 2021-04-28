@@ -28,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
+        //bottomNavigation.setDefaultBackgroundColor(Color.WHITE);
+        //bottomNavigation.setAccentColor(fetchColor(R.color.yourAccentColor));
+        //bottomNavigation.setInactiveColor(fetchColor(R.color.yourInactiveColor));
+
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<item>
+    <!-- XML file for the shape (saved in res/drawable) -->
+    <shape android:shape="rectangle" xmlns:android="http://schemas.android.com/apk/res/android">
+        <corners android:radius="22.5dp"/>
+        <solid android:color="#60E1E1E1"/>
+        <size android:height="50dp" android:width="507dp"/>
+    </shape>
+</item>
+</selector>
