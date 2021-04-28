@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.petup.R;
 
 public class TypeAnimauxFiltreAdaptater extends RecyclerView.Adapter<TypeAnimauxFiltreAdaptater.RecycleViewHolder_TAF> {
-    String types[]= {"Chien", "Chat", "Lapin", "Souris", "Rat"};
-    boolean clicks[] = {false, false, false, false, false};
+    String types[]= {"Chien", "Chat", "Lapin", "Souris", "Rat","Furet"};
+    boolean clicks[] = {false, false, false, false, false,false};
     int icone = R.drawable.ic_dashboard_black_24dp;
     int clické = R.drawable.ic_home_black_24dp;
     int nbr_clicks = 0;
@@ -74,7 +74,7 @@ public class TypeAnimauxFiltreAdaptater extends RecyclerView.Adapter<TypeAnimaux
 
     @Override
     public int getItemCount() {
-        return 5;
+        return 6;
     }
 
 

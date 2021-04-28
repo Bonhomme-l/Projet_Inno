@@ -17,10 +17,8 @@ import com.example.petup.ui.home.HomeFragment;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
-import static com.example.petup.ui.home.HomeFragment.*;
-
 public class FavorisFragment extends Fragment {
-    ArrayList<Animal> animaux= HomeFragment.dataAnimaux();
+    ArrayList<Animal> animaux= HomeFragment.animaux;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_favoris, container, false);
@@ -29,12 +27,29 @@ public class FavorisFragment extends Fragment {
         return root;
     }
 
-    public ArrayList<Profil> dataProfil(){
-        ArrayList<Profil> profils = new ArrayList<>();
+    public ArrayList<ProfilAdopteur> dataProfilAdopteurs(){
+        ArrayList<ProfilAdopteur> profilAdopteurs = new ArrayList<>();
 
-        Profil p = new Profil("Sara","Turki",new GregorianCalendar(2000,4,12));
-        profils.add(p);
+        ProfilAdopteur p = new ProfilAdopteur("Sara","Turki",new GregorianCalendar(2000,4,12),"sara.turki@gmail.com","S+U=love");
+        p.ajouterAnimal(animaux.get(0));
+        p.ajouterAnimal(animaux.get(1));
+        profilAdopteurs.add(p);
 
-        return profils;
+        return profilAdopteurs;
+    }
+
+    public ArrayList<ProfilAdopteur> dataProfilAdoptants(){
+        ArrayList<ProfilAdopteur> profilAdopteurs = new ArrayList<>();
+
+        ProfilAdopteur p = new ProfilAdopteur("Sara","Turki",new GregorianCalendar(2000,4,12),"sara.turki@gmail.com","S+U=love");
+        p.ajouterAnimal(animaux.get(0));
+        p.ajouterAnimal(animaux.get(1));
+        profilAdopteurs.add(p);
+        p = new ProfilAdopteur("Clément","Phung",new GregorianCalendar(2000,4,12),"clement.phung@hotmail.fr","ilovelaetitia");
+        p.ajouterAnimal(animaux.get(6));
+        p.ajouterAnimal(animaux.get(1));
+        profilAdopteurs.add(p);
+
+        return profilAdopteurs;
     }
 }

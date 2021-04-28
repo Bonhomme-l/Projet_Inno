@@ -19,7 +19,7 @@ import java.util.GregorianCalendar;
 public class HomeFragment extends Fragment  {
 
     private RecyclerView recycler_v,recycler_h;
-    public ArrayList<Animal> animaux = dataAnimaux();
+    public static ArrayList<Animal> animaux = dataAnimaux();
 
     public SearchView searchView;
     public ListeAnimauxAdaptater adaptater_la=new ListeAnimauxAdaptater(animaux);
@@ -58,42 +58,9 @@ public class HomeFragment extends Fragment  {
     public static ArrayList<Animal> dataAnimaux(){
         ArrayList<Animal> animaux = new ArrayList<>();
         ArrayList<Integer> phot = new ArrayList<>();
-        animaux.add(new Animal(1233682222,"Flipper","Chien",false,
+        animaux.add(new Animal("Flipper","Chien",false,
                 "Chihuahua",new GregorianCalendar(2010,2,26),false,
-                "Chien Mignon",20,R.drawable.ic_dashboard_black_24dp,phot));
-        animaux.add(new Animal(1233682222,"Flipper","Chien",false,
-                "Chihuahua",new GregorianCalendar(2010,2,26),false,
-                "Chien Mignon",20,R.drawable.ic_dashboard_black_24dp,phot));
-        animaux.add(new Animal(1233682222,"Flipper","Chien",false,
-                "Chihuahua",new GregorianCalendar(2010,2,26),false,
-                "Chien Mignon",20,R.drawable.ic_dashboard_black_24dp,phot));
-        animaux.add(new Animal(1233682222,"Flipper","Chien",false,
-                "Chihuahua",new GregorianCalendar(2010,2,26),false,
-                "Chien Mignon",20,R.drawable.ic_dashboard_black_24dp,phot));
-        animaux.add(new Animal(1233682222,"Flipper","Chien",false,
-                "Chihuahua",new GregorianCalendar(2010,2,26),false,
-                "Chien Mignon",20,R.drawable.ic_dashboard_black_24dp,phot));
-        animaux.add(new Animal(1233682222,"Flipper","Chien",false,
-                "Chihuahua",new GregorianCalendar(2010,2,26),false,
-                "Chien Mignon",20,R.drawable.ic_dashboard_black_24dp,phot));
-        animaux.add(new Animal(1233682222,"Flipper","Chien",false,
-                "Chihuahua",new GregorianCalendar(2010,2,26),false,
-                "Chien Mignon",20,R.drawable.ic_dashboard_black_24dp,phot));
-        animaux.add(new Animal(1233682222,"Flipper","Chien",false,
-                "Chihuahua",new GregorianCalendar(2010,2,26),false,
-                "Chien Mignon",20,R.drawable.ic_dashboard_black_24dp,phot));
-        animaux.add(new Animal(1233682222,"Flipper","Chien",false,
-                "Chihuahua",new GregorianCalendar(2010,2,26),false,
-                "Chien Mignon",20,R.drawable.ic_dashboard_black_24dp,phot));
-        animaux.add(new Animal(1233682222,"Flipper","Chien",false,
-                "Chihuahua",new GregorianCalendar(2010,2,26),false,
-                "Chien Mignon",20,R.drawable.ic_dashboard_black_24dp,phot));
-        animaux.add(new Animal(1233682222,"Flipper","Chien",false,
-                "Chihuahua",new GregorianCalendar(2010,2,26),false,
-                "Chien Mignon",20,R.drawable.ic_dashboard_black_24dp,phot));
-        animaux.add(new Animal(1233682222,"Flipper","Chien",false,
-                "Chihuahua",new GregorianCalendar(2010,2,26),false,
-                "Chien Mignon",20,R.drawable.ic_dashboard_black_24dp,phot));
+                "Chien Mignon",20,"1,allée Franck","Les Mureaux",R.drawable.ic_dashboard_black_24dp,phot));
         return animaux;
     }
 }

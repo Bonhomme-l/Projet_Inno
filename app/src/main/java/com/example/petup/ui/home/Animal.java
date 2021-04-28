@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Animal {
-    public int puce;
     public String prenom;
     public String type;
     public boolean genre;public int img_genre;
@@ -15,11 +14,12 @@ public class Animal {
     public boolean sterelisation;
     public String description;
     public int distance;
+    public String adresse;
+    public String ville;
     public int photo_profil;
     public ArrayList<Integer> photos;
 
     public Animal(
-            int puce,
             String prenom,
             String type,
             boolean genre,
@@ -28,9 +28,9 @@ public class Animal {
             boolean sterelisation,
             String description,
             int distance,
-            int photo_profil,
-            ArrayList<Integer> photos){
-        this.puce=puce;
+            String adresse,
+            String ville,
+            int photo_profil, ArrayList<Integer> phot){
         this.prenom=prenom;
         this.type=type;
         this.genre=genre;
@@ -39,6 +39,8 @@ public class Animal {
         this.sterelisation=sterelisation;
         this.description=description;
         this.distance=distance;
+        this.adresse=adresse;
+        this.ville=ville;
         this.photo_profil=photo_profil;
         this.photos=photos;
         if(genre==true){
@@ -47,5 +49,13 @@ public class Animal {
             img_genre=R.drawable.ic_male;
         }
     }
+
+    public void ajouterPhoto(int i){
+        photos.add(i);
+    }
+    public void supprimerPhoto(int i){
+        photos.add(i);
+    }
+
 
 }

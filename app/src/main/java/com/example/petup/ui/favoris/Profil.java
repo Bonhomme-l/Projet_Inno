@@ -5,21 +5,22 @@ import com.example.petup.ui.home.Animal;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class Profil {
+abstract class Profil {
     String prenom;
     String nom;
     Calendar naissance;
-    ArrayList<Animal> animaux_possédés;
+    String email;
+    String mdp;
+    public int photo_profil;
 
-    public Profil(String prenom,String nom,Calendar naissance){
+    public Profil(String prenom, String nom, Calendar naissance, String email, String mdp, int photo_profil){
         this.prenom=prenom;
         this.nom=nom;
         this.naissance=naissance;
+        this.email=email;
+        this.mdp=mdp;
+        this.photo_profil=photo_profil;
     }
-
-    public void ajouterAnimal(Animal a){ animaux_possédés.add(a); }
-    public void supprimerAnimal(Animal a){
-        animaux_possédés.remove(a);
-    }
-
+    abstract void ajouterAnimal(Animal a);
+    abstract void supprimerAnimal(Animal a);
 }
