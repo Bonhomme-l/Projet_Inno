@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_fav"
         android:name="com.example.petup.ui.favoris.FavorisFragment"
-        android:label="@string/title_dashboard"
+        android:label="Favoris"
         tools:layout="@layout/fragment_favoris" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_map"
         android:name="com.example.petup.ui.carte.CarteFragment"
-        android:label="@string/title_notifications"
+        android:label="Map"
         tools:layout="@layout/fragment_carte" />
 </navigation>

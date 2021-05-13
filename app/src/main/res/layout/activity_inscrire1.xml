@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView10"
+        app:layout_constraintVertical_bias="0.117" />
+
+    <View
+        android:id="@+id/view9"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="230dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="0dp"
+        android:layout_height="368dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="230dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="110dp"
+        android:background="@drawable/rectangle_bleu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView8"
+        style="@style/Login_Titre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="108dp"
+        android:text="Inscription"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="309dp"
+        android:layout_height="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:srcCompat="@drawable/ligne" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/paw_orange" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:srcCompat="@drawable/marqueur_orange" />
+
+    <TextView
+        android:id="@+id/textView11"
+        style="@style/App_Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:scaleX="0.9"
+        android:scaleY="0.9"
+        android:text="Pet\nUp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView5"
+        android:layout_width="78dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="24dp"
+        app:cardCornerRadius="@dimen/radius"
+        app:layout_constraintEnd_toEndOf="@+id/textView10"
+        app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintStart_toStartOf="@+id/textView10"
+        app:layout_constraintTop_toTopOf="@+id/textView10" >
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/profil_violet" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView6"
+        android:layout_width="30dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        app:cardBackgroundColor="@color/violet"
+        app:cardCornerRadius="@dimen/radius"
+        app:layout_constraintStart_toStartOf="@+id/cardView5"
+        app:layout_constraintTop_toTopOf="@+id/cardView5">
+
+        <ImageView
+            android:id="@+id/imageView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleX="0.55"
+            android:scaleY="0.55"
+            app:srcCompat="@drawable/appareilphoto_blanc" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/bouton_suivant_inscription1"
+        android:layout_width="211dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/bouton_fond_orange"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView10"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+        app:layout_constraintVertical_bias="0.105" />
+
+    <TextView
+        android:id="@+id/textView26"
+        style="@style/Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:text="Suivant"
+        app:layout_constraintBottom_toBottomOf="@+id/bouton_suivant_inscription1"
+        app:layout_constraintEnd_toEndOf="@+id/bouton_suivant_inscription1"
+        app:layout_constraintStart_toStartOf="@+id/bouton_suivant_inscription1"
+        app:layout_constraintTop_toTopOf="@+id/bouton_suivant_inscription1" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@+id/textView10"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/cardView5"
+        app:layout_constraintTop_toTopOf="@+id/textView10">
+
+        <TextView
+            android:id="@+id/textView20"
+            style="@style/Login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prénom" />
+
+        <EditText
+            android:id="@+id/prenom_inscrire"
+            style="@style/Login"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/login_height"
+            android:background="@drawable/login_edittext"
+            android:ems="10"
+            android:paddingStart="12dp"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView21"
+            style="@style/Login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nom" />
+
+        <EditText
+
+            android:id="@+id/nom_incrire"
+            style="@style/Login"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/login_height"
+            android:background="@drawable/login_edittext"
+            android:ems="10"
+            android:paddingStart="12dp"
+            android:inputType="textPersonName"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@+id/textView10"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
+
+        <TextView
+            android:id="@+id/textView22"
+            style="@style/Login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date de naissance" />
+
+        <TextView
+
+            android:id="@+id/ddn_inscrire"
+            style="@style/Login"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/login_height"
+            android:background="@drawable/login_edittext"
+            android:ems="10"
+            android:paddingStart="12dp"
+            android:inputType="textPersonName" />
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView24"
+                    style="@style/Login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Adresse" />
+
+                <EditText
+                    android:paddingStart="12dp"
+                    android:id="@+id/adresse_inscrire"
+                    style="@style/Login"
+                    android:layout_width="150dp"
+                    android:layout_height="@dimen/login_height"
+                    android:background="@drawable/login_edittext"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColorHint="@color/bleufonce"
+                    android:hint="1, rue petup" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView23"
+                    style="@style/Login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ville" />
+
+                <EditText
+                    android:paddingStart="12dp"
+                    android:id="@+id/ville_inscrire"
+                    style="@style/Login_p"
+                    android:layout_width="130dp"
+                    android:layout_height="@dimen/login_height"
+                    android:background="@drawable/login_edittext"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColorHint="@color/bleufonce"
+                    android:hint="Paris" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+
+            <TextView
+                android:id="@+id/textView3"
+                style="@style/Login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sexe" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup2"
+                android:layout_width="241dp"
+                android:layout_height="51dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/femme_radio_incrire"
+                    style="@style/Login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#FFFFFF"
+                    android:scaleX="0.8"
+                    android:scaleY="0.8"
+                    android:text="Femme" />
+
+                <RadioButton
+                    android:id="@+id/homme_radio_inscrire"
+                    style="@style/Login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#FFFFFF"
+                    android:scaleX="0.8"
+                    android:scaleY="0.8"
+                    android:text="Homme" />
+
+                <RadioButton
+                    android:id="@+id/autre_radio_inscrire"
+                    style="@style/Login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#FFFFFF"
+                    android:scaleX="0.8"
+                    android:scaleY="0.8"
+                    android:text="Autre" />
+            </RadioGroup>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "777452129919",
+    "project_id": "petup-database",
+    "storage_bucket": "petup-database.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:777452129919:android:98b9ab22518a73a3b3b94a",
+        "android_client_info": {
+          "package_name": "com.example.petup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "777452129919-q7gcbc6b42lmuq7tq3fj6juomneighnv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.petup",
+            "certificate_hash": "3127207a7f44f6daad4477fc9f0a8d0da218911f"
+          }
+        },
+        {
+          "client_id": "777452129919-h4ffb3l4vrk770qe48t56qhelrd2g5dg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIaf8dtmA4kZEZLNtm42ktaX2_97Q2iWw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "777452129919-h4ffb3l4vrk770qe48t56qhelrd2g5dg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

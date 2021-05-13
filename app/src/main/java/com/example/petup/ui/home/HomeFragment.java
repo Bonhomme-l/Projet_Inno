@@ -1,5 +1,6 @@
 package com.example.petup.ui.home;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,14 +9,17 @@ import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.petup.R;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class HomeFragment extends Fragment  {
 
     private RecyclerView recycler_v,recycler_h;
@@ -55,12 +59,44 @@ public class HomeFragment extends Fragment  {
         return root;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public static ArrayList<Animal> dataAnimaux(){
         ArrayList<Animal> animaux = new ArrayList<>();
         ArrayList<Integer> phot = new ArrayList<>();
-        animaux.add(new Animal("Flipper","Chien",false,
-                "Chihuahua",new GregorianCalendar(2010,2,26),false,
-                "Chien Mignon",20,"1,allée Franck","Les Mureaux",R.drawable.ic_dashboard_black_24dp,phot));
+        animaux.add(new Animal("Flipper","Chien",true,"Chihuahua",LocalDate.of(2010,1,26),true,
+                "Chien vraiment mignon qui aime joué avec des doudous",
+                20,"1, allée Franck","Les Mureaux","Fauve","Bruns",30,false,R.drawable.ic_dashboard_black_24dp,phot));
+        animaux.add(new Animal("Flipper","Chien",true,"Chihuahua",LocalDate.of(2010,1,26),true,
+                "Chien vraiment mignon qui aime joué avec des doudous",
+                20,"1, allée Franck","Les Mureaux","Fauve","Bruns",30,false,R.drawable.ic_dashboard_black_24dp,phot));
+        animaux.add(new Animal("Flipper","Chien",true,"Chihuahua",LocalDate.of(2010,1,26),true,
+                "Chien vraiment mignon qui aime joué avec des doudous",
+                20,"1, allée Franck","Les Mureaux","Fauve","Bruns",30,false,R.drawable.ic_dashboard_black_24dp,phot));
+        animaux.add(new Animal("Flipper","Chien",true,"Chihuahua",LocalDate.of(2010,1,26),true,
+                "Chien vraiment mignon qui aime joué avec des doudous",
+                20,"1, allée Franck","Les Mureaux","Fauve","Bruns",30,false,R.drawable.ic_dashboard_black_24dp,phot));
+        animaux.add(new Animal("Flipper","Chien",true,"Chihuahua",LocalDate.of(2010,1,26),true,
+                "Chien vraiment mignon qui aime joué avec des doudous",
+                20,"1, allée Franck","Les Mureaux","Fauve","Bruns",30,false,R.drawable.ic_dashboard_black_24dp,phot));
+        animaux.add(new Animal("Flipper","Chien",true,"Chihuahua",LocalDate.of(2010,1,26),true,
+                "Chien vraiment mignon qui aime joué avec des doudous",
+                20,"1, allée Franck","Les Mureaux","Fauve","Bruns",30,false,R.drawable.ic_dashboard_black_24dp,phot));
+        animaux.add(new Animal("Flipper","Chien",true,"Chihuahua",LocalDate.of(2010,1,26),true,
+                "Chien vraiment mignon qui aime joué avec des doudous",
+                20,"1, allée Franck","Les Mureaux","Fauve","Bruns",30,false,R.drawable.ic_dashboard_black_24dp,phot));
+        animaux.add(new Animal("Flipper","Chien",true,"Chihuahua",LocalDate.of(2010,1,26),true,
+                "Chien vraiment mignon qui aime joué avec des doudous",
+                20,"1, allée Franck","Les Mureaux","Fauve","Bruns",30,false,R.drawable.ic_dashboard_black_24dp,phot));
+        animaux.add(new Animal("Flipper","Chien",true,"Chihuahua",LocalDate.of(2010,1,26),true,
+                "Chien vraiment mignon qui aime joué avec des doudous",
+                20,"1, allée Franck","Les Mureaux","Fauve","Bruns",30,false,R.drawable.ic_dashboard_black_24dp,phot));
+        animaux.add(new Animal("Flipper","Chien",true,"Chihuahua",LocalDate.of(2010,1,26),true,
+                "Chien vraiment mignon qui aime joué avec des doudous",
+                20,"1, allée Franck","Les Mureaux","Fauve","Bruns",30,false,R.drawable.ic_dashboard_black_24dp,phot));
+
+
+
+
         return animaux;
     }
 }

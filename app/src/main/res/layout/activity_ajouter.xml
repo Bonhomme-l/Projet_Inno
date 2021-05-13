@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AjouterActivity">
+
+
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="328dp"
+        android:layout_height="280dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="196dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/rectangle_jaune_trans"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView18" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="0dp"
+        android:layout_height="280dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/rectangle_jaune"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+
+
+    <TextView
+        android:id="@+id/textView4"
+        style="@style/Login_Titre_"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Ajouter un animal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="379dp"
+        android:layout_height="12dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView4"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:srcCompat="@drawable/ligne" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout12"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/textView18"
+        app:layout_constraintEnd_toEndOf="@+id/textView18"
+        app:layout_constraintStart_toStartOf="@+id/textView18"
+        app:layout_constraintTop_toTopOf="@+id/textView18">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView30"
+                    style="@style/Login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Prénom" />
+
+                <EditText
+                    android:id="@+id/prenom_ajouter"
+                    style="@style/Login"
+                    android:layout_width="200dp"
+                    android:layout_height="@dimen/login_height"
+                    android:background="@drawable/login_edittext"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:paddingStart="12dp" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="8dp"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView51"
+                    style="@style/Login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Type" />
+
+                <Spinner
+                    android:id="@+id/spinner_type_ajouter"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/login_height"
+                    android:background="@drawable/login_edittext"
+                    android:spinnerMode="dropdown">
+
+                </Spinner>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/textView313"
+            style="@style/Login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Race" />
+
+        <EditText
+            android:id="@+id/race_ajouter"
+            style="@style/Login"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/login_height"
+            android:background="@drawable/login_edittext"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingStart="12dp" />
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView32"
+                    style="@style/Login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date de naissance" />
+
+                <EditText
+                    android:id="@+id/ddn_ajouter"
+                    style="@style/Login"
+                    android:layout_width="200dp"
+                    android:layout_height="@dimen/login_height"
+                    android:background="@drawable/login_edittext"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="textPersonName" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="8dp"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView39"
+                    style="@style/Login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reproduction ?" />
+
+                <Spinner
+                    android:id="@+id/spinner_reproduction_ajouter"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/login_height"
+                    android:background="@drawable/login_edittext">
+
+                </Spinner>
+            </LinearLayout>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView34"
+                    style="@style/Login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sexe" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/femelle_radio_ajouter"
+                        style="@style/Login"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#FFFFFF"
+                        android:text="Femelle" />
+
+                    <RadioButton
+                        android:id="@+id/male_radio_ajouter"
+                        style="@style/Login"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#FFFFFF"
+                        android:text="Mâle" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <Space
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout8"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView31"
+                    style="@style/Login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Animal stérélisé ?" />
+
+                <Spinner
+                    android:id="@+id/spinner_sterelise_ajouter"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/login_height"
+                    android:background="@drawable/login_edittext">
+
+                </Spinner>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView29"
+        style="@style/Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Facultatif"
+        android:textColor="@color/jaune"
+        app:layout_constraintEnd_toEndOf="@+id/textView28"
+        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintStart_toStartOf="@+id/textView28"
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout9"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="32dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/textView28"
+        app:layout_constraintEnd_toStartOf="@+id/view"
+        app:layout_constraintStart_toStartOf="@+id/textView28"
+        app:layout_constraintTop_toBottomOf="@+id/textView29"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+
+            android:id="@+id/textView33"
+            style="@style/Login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Couleur du pelage" />
+
+        <EditText
+            android:id="@+id/pelage_ajouter"
+            style="@style/Login"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/login_height"
+            android:background="@drawable/login_edittext"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingStart="12dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
+
+        <TextView
+            android:id="@+id/textView35"
+            style="@style/Login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Couleur des yeux" />
+
+        <EditText
+            android:id="@+id/yeux_ajouter"
+            style="@style/Login"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/login_height"
+            android:background="@drawable/login_edittext"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingStart="12dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout13"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout9"
+        app:layout_constraintEnd_toEndOf="@+id/textView28"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout9"
+        app:layout_constraintVertical_bias="0.8">
+
+        <TextView
+            android:id="@+id/textView36"
+            style="@style/Login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Taille (cm)" />
+
+        <EditText
+            android:id="@+id/taille_ajouter"
+            style="@style/Login"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/login_height"
+            android:background="@drawable/login_edittext"
+            android:ems="10"
+            android:inputType="number"
+            android:paddingStart="12dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
+
+        <TextView
+            android:id="@+id/textView37"
+            style="@style/Login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Extérieur ?" />
+
+        <Spinner
+            android:id="@+id/spinner_ext_ajouter"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/login_height"
+            android:background="@drawable/login_edittext">
+
+        </Spinner>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/suivant_ajouter"
+        style="@style/Login"
+        android:layout_width="230dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/bouton_fond_violet"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView25"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="@+id/textView28"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout9"
+        app:layout_constraintVertical_bias="0.111" />
+
+    <TextView
+        android:id="@+id/textView38"
+        style="@style/Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:text="Suivant"
+        app:layout_constraintBottom_toBottomOf="@+id/suivant_ajouter"
+        app:layout_constraintEnd_toEndOf="@+id/suivant_ajouter"
+        app:layout_constraintStart_toStartOf="@+id/suivant_ajouter"
+        app:layout_constraintTop_toTopOf="@+id/suivant_ajouter" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="1dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView28"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

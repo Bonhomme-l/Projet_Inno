@@ -2,20 +2,26 @@ package com.example.petup.ui.home;
 
 import com.example.petup.R;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Animal {
+    public String ville;
     public String prenom;
     public String type;
     public boolean genre;public int img_genre;
     public String race;
-    public Calendar naissance;
+    public LocalDate naissance;
     public boolean sterelisation;
     public String description;
     public int distance;
     public String adresse;
-    public String ville;
+    public int taille;
+    public String pelage;
+    public String yeux;
+    public boolean exterieur;
+
     public int photo_profil;
     public ArrayList<Integer> photos;
 
@@ -24,13 +30,17 @@ public class Animal {
             String type,
             boolean genre,
             String race,
-            Calendar naissance,
+            LocalDate naissance,
             boolean sterelisation,
             String description,
             int distance,
             String adresse,
             String ville,
-            int photo_profil, ArrayList<Integer> phot){
+            String pelage,
+            String yeux,
+            int taille,
+            boolean exterieur,
+            int photo_profil, ArrayList<Integer> photos){
         this.prenom=prenom;
         this.type=type;
         this.genre=genre;
@@ -41,12 +51,16 @@ public class Animal {
         this.distance=distance;
         this.adresse=adresse;
         this.ville=ville;
+        this.pelage=pelage;
+        this.taille=taille;
+        this.yeux=yeux;
+        this.exterieur=exterieur;
         this.photo_profil=photo_profil;
         this.photos=photos;
         if(genre==true){
-            img_genre= R.drawable.ic_female;
+            img_genre= R.drawable.female;
         }else{
-            img_genre=R.drawable.ic_male;
+            img_genre=R.drawable.male;
         }
     }
 

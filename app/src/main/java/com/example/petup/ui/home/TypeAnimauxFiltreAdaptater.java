@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.petup.R;
@@ -16,8 +18,10 @@ import com.example.petup.R;
 public class TypeAnimauxFiltreAdaptater extends RecyclerView.Adapter<TypeAnimauxFiltreAdaptater.RecycleViewHolder_TAF> {
     String types[]= {"Chien", "Chat", "Lapin", "Souris", "Rat","Furet"};
     boolean clicks[] = {false, false, false, false, false,false};
-    int icone = R.drawable.ic_dashboard_black_24dp;
-    int clické = R.drawable.ic_home_black_24dp;
+    int icone[]={R.drawable.chienjaune, R.drawable.chatjaune, R.drawable.lapinjaune, R.drawable.sourisjaune, R.drawable.ratjaune, R.drawable.furetjaune};
+    int violet = R.color.violet;
+    int blanc = R.color.white;
+    int clické[]={R.drawable.chienblanc, R.drawable.chatblanc, R.drawable.lapinblanc, R.drawable.sourisblanc, R.drawable.ratblanc, R.drawable.furetblanc};
     int nbr_clicks = 0;
     ListeAnimauxAdaptater adaptater;
 
@@ -40,7 +44,7 @@ public class TypeAnimauxFiltreAdaptater extends RecyclerView.Adapter<TypeAnimaux
     public void onBindViewHolder(@NonNull RecycleViewHolder_TAF holder, int position) {
         String type_a = types[position];
         holder.getType().setText(type_a);
-        holder.getIconeType().setImageResource(icone);
+        holder.getIconeType().setImageResource(icone[position]);
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -55,16 +59,21 @@ public class TypeAnimauxFiltreAdaptater extends RecyclerView.Adapter<TypeAnimaux
                     }else{
                         adaptater.getFilter().filter(type_a);
                         clicks[position]=true;
-                        holder.getIconeType().setImageResource(clické);
+                        holder.getIconeType().setImageResource(clické[position]);
+                        holder.getFond().setBackgroundColor(blanc);
+
                         nbr_clicks=0;
+                        return;
                     }
                 }else{
                     adaptater.getFilter().filter("");
                     for(int i=0;i<5;i++){
                         clicks[i]=false;
                     }
-                    holder.getIconeType().setImageResource(icone);
+                    holder.getIconeType().setImageResource(icone[position]);
+                    holder.getFond().setBackgroundColor(violet);
                     nbr_clicks=0;
+                    return;
                 }
 
             }
@@ -83,8 +92,10 @@ public class TypeAnimauxFiltreAdaptater extends RecyclerView.Adapter<TypeAnimaux
 
         private TextView type;
         private ImageView icone;
+        private TextView fond;
         public RecycleViewHolder_TAF(@NonNull View v) {
             super(v);
+            fond= v.findViewById(R.id.background_type);
             type = v.findViewById(R.id.type_filtre);
             icone = v.findViewById(R.id.image_type_filtre);
 
@@ -96,7 +107,9 @@ public class TypeAnimauxFiltreAdaptater extends RecyclerView.Adapter<TypeAnimaux
         public ImageView getIconeType(){
             return icone;
         }
+        public TextView getFond(){ return fond; }
     }
+
 }
 
 

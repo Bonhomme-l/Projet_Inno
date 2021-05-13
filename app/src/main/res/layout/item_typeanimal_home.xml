@@ -5,31 +5,37 @@
     android:layout_width="70dp"
     android:layout_height="wrap_content">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
+    <TextView
+        android:id="@+id/background_type"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="5dp"
+        android:background="@drawable/petit_rectangle_blanc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/image_type_filtre"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:srcCompat="@tools:sample/avatars" />
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        style="@style/Types"
         android:id="@+id/type_filtre"
+        style="@style/Types"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
         android:text="Type"
-        app:layout_constraintEnd_toEndOf="@+id/cardView2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+        app:layout_constraintEnd_toEndOf="@+id/background_type"
+        app:layout_constraintStart_toStartOf="@+id/background_type"
+        app:layout_constraintTop_toBottomOf="@+id/background_type" />
+
+    <ImageView
+        android:id="@+id/image_type_filtre"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:translationX="15dp"
+        android:translationY="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/background_type"
+        app:layout_constraintEnd_toEndOf="@+id/background_type"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/background_type"
+        app:layout_constraintTop_toTopOf="@+id/background_type"
+        app:layout_constraintVertical_bias="0.0"
+        tools:srcCompat="@tools:sample/avatars" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

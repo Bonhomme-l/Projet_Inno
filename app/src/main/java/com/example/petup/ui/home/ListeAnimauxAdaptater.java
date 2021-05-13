@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.petup.HomeActivity;
 import com.example.petup.ProfilAnimalActivity;
 import com.example.petup.R;
 
@@ -41,21 +42,49 @@ public class ListeAnimauxAdaptater extends RecyclerView.Adapter<ListeAnimauxAdap
         return new RecycleViewHolder_LA(view);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("ResourceType")
     @Override
     public void onBindViewHolder(@NonNull RecycleViewHolder_LA holder, int position) {
         holder.getPrenom().setText(animaux.get(position).prenom);
         holder.getRace().setText(animaux.get(position).race);
+        holder.getVille().setText(animaux.get(position).ville);
+        holder.getAge().setText(HomeActivity.calculAge(animaux.get(position).naissance));
         holder.getDistance().setText(String.valueOf(animaux.get(position).distance)+" km");
         holder.getPP().setImageResource(animaux.get(position).photo_profil);
         holder.getGenre().setImageResource(animaux.get(position).img_genre);
+        switch (animaux.get(position).type){
+            case "Chien":
+                holder.getTypeImg().setImageResource(R.drawable.chienbleu);
+                break;
+            case "Chat":
+                holder.getTypeImg().setImageResource(R.drawable.chatbleu);
+                break;
+            case "Lapin":
+                holder.getTypeImg().setImageResource(R.drawable.lapinbleu);
+                break;
+            case "Souris":
+                holder.getTypeImg().setImageResource(R.drawable.sourisbleu);
+                break;
+            case "Rat":
+                holder.getTypeImg().setImageResource(R.drawable.ratbleu);
+                break;
+            case "Furet":
+                holder.getTypeImg().setImageResource(R.drawable.furetbleu);
+                break;
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), ProfilAnimalActivity.class); //On "prend" l'autre page
-                String message = animaux.get(position).prenom;
-                i.putExtra("Mess",message);//Avoir un message quand on change d'activité
+                Intent i = new Intent(view.getContext(), ProfilAnimalActivity.class);
+                i.putExtra("Photos",animaux.get(position).photos);
+                i.putExtra("Photo Profil",animaux.get(position).photo_profil);
+                i.putExtra("Nom",animaux.get(position).prenom);
+                i.putExtra("Adresse",animaux.get(position).adresse);
+                i.putExtra("Ville",animaux.get(position).ville);
+                i.putExtra("Description",animaux.get(position).description);
+
                 view.getContext().startActivity(i); //On la start
             }
         });
@@ -99,11 +128,17 @@ public class ListeAnimauxAdaptater extends RecyclerView.Adapter<ListeAnimauxAdap
         private TextView prenom;
         private TextView race;
         private TextView distance;
+        private TextView ville;
+        private TextView age;
         private ImageView genre;
+        private ImageView typeimg;
         private ImageView photo_profil;
 
         public RecycleViewHolder_LA(@NonNull View v) {
             super(v);
+            typeimg= v.findViewById(R.id.typeimg_home);
+            age= v.findViewById(R.id.age_home);
+            ville = v.findViewById(R.id.ville_home);
             prenom = v.findViewById(R.id.prenom_home);
             race = v.findViewById(R.id.race_home);
             distance = v.findViewById(R.id.distance_home);
@@ -121,6 +156,9 @@ public class ListeAnimauxAdaptater extends RecyclerView.Adapter<ListeAnimauxAdap
         }
         public ImageView getGenre(){ return genre; }
         public ImageView getPP(){ return photo_profil; }
+        public TextView getVille(){ return ville; }
+        public TextView getAge(){ return age; }
+        public ImageView getTypeImg(){ return typeimg; }
     }
 }
 

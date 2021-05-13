@@ -6,4 +6,7 @@
     <dimen name="radius">40dp</dimen>
     <dimen name="ombre">5dp</dimen>
 
+    <dimen name="login_height">30dp</dimen>
+    <dimen name="login_width">258dp</dimen>
+
 </resources>
