@@ -1,33 +1,48 @@
 package com.example.petup.ui.favoris;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.Filter;
-import android.widget.Filterable;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.petup.ProfilAnimalActivity;
+import com.example.petup.HomeActivity;
+import com.example.petup.Profil;
 import com.example.petup.R;
-import com.example.petup.ui.home.Animal;
+import com.example.petup.Animal;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class FavorisListeAdaptater extends RecyclerView.Adapter<FavorisListeAdaptater.RecycleViewHolder_Fav> {
-    ArrayList<Animal> animaux;
+    ArrayList<Animal> animaux = new ArrayList<>();
+    StorageReference storageRef = FirebaseStorage.getInstance().getReference();
 
-    public FavorisListeAdaptater(ArrayList<Animal> animaux) {
-        this.animaux=animaux;
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public FavorisListeAdaptater(ArrayList<String> animaux_id) {
+
+        for(String id : animaux_id){
+            FirebaseFirestore.getInstance().collection("Animaux").document(id).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    animaux.add(documentSnapshot.toObject(Animal.class));
+                }
+            });
+        }
+
+
     }
 
     public int getItemViewType(final int position) {
@@ -43,9 +58,16 @@ public class FavorisListeAdaptater extends RecyclerView.Adapter<FavorisListeAdap
     @SuppressLint("ResourceType")
     @Override
     public void onBindViewHolder(@NonNull RecycleViewHolder_Fav holder, int position) {
-        holder.getPrenom().setText(animaux.get(position).prenom);
-        holder.getRace().setText(animaux.get(position).race);
-        holder.getPP().setImageResource(animaux.get(position).photo_profil);
+        holder.getPrenom().setText(animaux.get(position).getPrenom());
+        holder.getRace().setText(animaux.get(position).getRace());
+
+        Uri uri = Uri.parse(animaux.get(position).getId()) ;
+        storageRef.child(animaux.get(position).getId()+"/"+ uri.getLastPathSegment()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(holder.getPP());
+            }
+        });
     }
 
     @Override

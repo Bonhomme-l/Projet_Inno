@@ -1,4 +1,4 @@
-package com.example.petup;
+package com.example.petup.activities.ajouter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,12 +18,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import com.example.petup.R;
+
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Locale;
 
 public class AjouterActivity extends AppCompatActivity {
     private EditText prenom;
@@ -99,28 +96,33 @@ public class AjouterActivity extends AppCompatActivity {
                     Toast.makeText(AjouterActivity.this, "Veuillez l'ensemble des champs les champs ", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    boolean repro,ext,ster;
+                    boolean repr,ext,ster,sexe;
                     Intent intent = new Intent(AjouterActivity.this, AjouterActivity2.class);
                     intent.putExtra("prenom",txtPrenom);
                     intent.putExtra("type",txtType);
                     intent.putExtra("race",txtRace);
                     intent.putExtra("date",txtDate);
-                    if(txtRepro.equals("Oui")) repro=true;
-                    else repro= false;
-                    intent.putExtra("reproduction",repro);
+
+                    if(txtRepro.equals("Oui")) repr=true;
+                    else repr= false;
+                    intent.putExtra("reproduction",repr);
+
                     if(txtSter.equals("Oui")) ster=true;
                     else ster= false;
                     intent.putExtra("sterelisé",ster);
+
                     intent.putExtra("pelage",txtPelage);
                     intent.putExtra("taille",txtTaille);
                     intent.putExtra("yeux",txtYeux);
+
                     if(txtExt.equals("Oui")) ext=true;
                     else ext= false;
                     intent.putExtra("exterieur",ext);
-                    String txtSexe="";
-                    if(femelle.isChecked()) txtSexe="Femelle";
-                    else txtSexe="Mâle";
-                    intent.putExtra("sexe",txtSexe);
+
+                    if(femelle.isChecked()) sexe=true;
+                    else sexe=false;
+                    intent.putExtra("sexe",sexe);
+
                     startActivity(intent);
                 }
             }

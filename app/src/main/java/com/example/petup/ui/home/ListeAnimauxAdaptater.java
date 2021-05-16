@@ -2,34 +2,42 @@ package com.example.petup.ui.home;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.Filter;
-import android.widget.Filterable;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.petup.Animal;
 import com.example.petup.HomeActivity;
-import com.example.petup.ProfilAnimalActivity;
+import com.example.petup.MainActivity;
+import com.example.petup.activities.profilanimal.ProfilAnimalActivity;
 import com.example.petup.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class ListeAnimauxAdaptater extends RecyclerView.Adapter<ListeAnimauxAdaptater.RecycleViewHolder_LA> {
     ArrayList<Animal> animaux;
     ArrayList<Animal> animaux_full;
+    StorageReference storageRef = FirebaseStorage.getInstance().getReference();
 
     public ListeAnimauxAdaptater(ArrayList<Animal> animaux) {
-        this.animaux=animaux;
-        animaux_full= new ArrayList<>(animaux);
+        this.animaux = animaux;
+        animaux_full = new ArrayList<>(animaux);
     }
 
     public int getItemViewType(final int position) {
@@ -46,14 +54,23 @@ public class ListeAnimauxAdaptater extends RecyclerView.Adapter<ListeAnimauxAdap
     @SuppressLint("ResourceType")
     @Override
     public void onBindViewHolder(@NonNull RecycleViewHolder_LA holder, int position) {
-        holder.getPrenom().setText(animaux.get(position).prenom);
-        holder.getRace().setText(animaux.get(position).race);
-        holder.getVille().setText(animaux.get(position).ville);
-        holder.getAge().setText(HomeActivity.calculAge(animaux.get(position).naissance));
-        holder.getDistance().setText(String.valueOf(animaux.get(position).distance)+" km");
-        holder.getPP().setImageResource(animaux.get(position).photo_profil);
-        holder.getGenre().setImageResource(animaux.get(position).img_genre);
-        switch (animaux.get(position).type){
+        holder.getPrenom().setText(animaux.get(position).getPrenom());
+        holder.getRace().setText(animaux.get(position).getRace());
+        holder.getVille().setText(animaux.get(position).getVille());
+        holder.getAge().setText(HomeActivity.calculAge(animaux.get(position).getNaissance()));
+        holder.getDistance().setText("40 km");
+        Uri uri = Uri.parse(animaux.get(position).getId()) ;
+        storageRef.child(animaux.get(position).getId()+"/"+ uri.getLastPathSegment()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(holder.getPP());
+            }
+        });
+
+        if(animaux.get(position).isGenre())holder.getGenre().setImageResource(R.drawable.female);
+        else holder.getGenre().setImageResource(R.drawable.male);
+
+        switch (animaux.get(position).type) {
             case "Chien":
                 holder.getTypeImg().setImageResource(R.drawable.chienbleu);
                 break;
@@ -78,12 +95,12 @@ public class ListeAnimauxAdaptater extends RecyclerView.Adapter<ListeAnimauxAdap
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(view.getContext(), ProfilAnimalActivity.class);
-                i.putExtra("Photos",animaux.get(position).photos);
-                i.putExtra("Photo Profil",animaux.get(position).photo_profil);
-                i.putExtra("Nom",animaux.get(position).prenom);
-                i.putExtra("Adresse",animaux.get(position).adresse);
-                i.putExtra("Ville",animaux.get(position).ville);
-                i.putExtra("Description",animaux.get(position).description);
+                i.putExtra("Id", animaux.get(position).getId());
+                i.putExtra("Age",HomeActivity.calculAge(animaux.get(position).getNaissance()));
+                i.putExtra("Photo Profil", animaux.get(position).getPp_url());
+                i.putExtra("Nom", animaux.get(position).getPrenom());
+                i.putExtra("Ville", animaux.get(position).getVille());
+                i.putExtra("Description", animaux.get(position).getDescription());
 
                 view.getContext().startActivity(i); //On la start
             }
@@ -98,6 +115,7 @@ public class ListeAnimauxAdaptater extends RecyclerView.Adapter<ListeAnimauxAdap
     public Filter getFilter() {
         return exampleFilter;
     }
+
     public Filter exampleFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
@@ -116,15 +134,18 @@ public class ListeAnimauxAdaptater extends RecyclerView.Adapter<ListeAnimauxAdap
             results.values = filteredList;
             return results;
         }
+
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
             animaux.clear();
             animaux.addAll((ArrayList<Animal>) results.values);
             notifyDataSetChanged();
         }
+
+
     };
 
-    public class RecycleViewHolder_LA extends RecyclerView.ViewHolder {
+    class RecycleViewHolder_LA extends RecyclerView.ViewHolder {
         private TextView prenom;
         private TextView race;
         private TextView distance;
@@ -161,4 +182,10 @@ public class ListeAnimauxAdaptater extends RecyclerView.Adapter<ListeAnimauxAdap
         public ImageView getTypeImg(){ return typeimg; }
     }
 }
+
+
+
+
+
+
 

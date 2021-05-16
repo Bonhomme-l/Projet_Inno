@@ -1,30 +1,22 @@
-package com.example.petup;
+package com.example.petup.activities.profilanimal;
 
 import android.annotation.SuppressLint;
 import android.os.Build;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.petup.HomeActivity;
 import com.example.petup.R;
-import com.example.petup.ui.home.Animal;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
+import com.example.petup.Animal;
 
 public class CategoriesAnimauxAdaptater extends RecyclerView.Adapter<CategoriesAnimauxAdaptater.RecycleViewHolder_CA> {
-    String cat[]={"Genre","Race","Age","Stérélisé","Pelage","Yeux","Taille","Extérieur"};
+    String cat[]={"Genre","Race","Age","Type","Stérélisé","Pelage","Yeux","Taille","Extérieur"};
     Animal animal;
     String cont[];
 
@@ -32,22 +24,22 @@ public class CategoriesAnimauxAdaptater extends RecyclerView.Adapter<CategoriesA
     public CategoriesAnimauxAdaptater(Animal animal){
         this.animal=animal;
 
-        boolean g=animal.genre;
+        boolean g=animal.isGenre();
         String genre;
         if(g) genre="Femelle";
         else genre="Mâle";
 
-        boolean s=animal.sterelisation;
+        boolean s=animal.isSterelisation();
         String sterelise;
         if(s) sterelise="Oui";
         else sterelise="Non";
 
-        boolean e=animal.exterieur;
+        boolean e=animal.isExterieur();
         String ext;
         if(e) ext="Oui";
         else ext="Non";
 
-        cont= new String[]{genre, animal.race, HomeActivity.calculAge(animal.naissance),sterelise,animal.pelage,animal.yeux,String.valueOf(animal.taille)+" cm",ext};
+        cont= new String[]{genre, animal.getRace(), HomeActivity.calculAge(animal.getNaissance()),animal.getType(),sterelise,animal.getPelage(),animal.getYeux(),animal.getTaille()+" cm",ext};
     }
 
 
@@ -70,7 +62,6 @@ public class CategoriesAnimauxAdaptater extends RecyclerView.Adapter<CategoriesA
 
 
     }
-
 
     @Override
     public int getItemCount() {

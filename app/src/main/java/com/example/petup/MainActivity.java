@@ -1,29 +1,45 @@
 package com.example.petup;
 
+import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.petup.ui.home.HomeFragment;
+import com.example.petup.activities.ajouter.AjouterActivity;
+import com.example.petup.activities.ajouter.AjouterActivity2;
+import com.example.petup.activities.inscrire.InscrireActivity1;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.ByteArrayOutputStream;
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity  {
     private EditText email;
@@ -41,10 +57,37 @@ public class MainActivity extends AppCompatActivity  {
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
+/*
+        DocumentReference docRef = db.collection("cities").document("LA");
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+               City city = documentSnapshot.toObject(City.class);
+
+               Log.d("wsh",city.getState());
+            }
+        });
+
+
+
+        storageRef.child("images/Cat Paw Vector Icon Calico Kitten.png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(imageup2);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Toast.makeText(MainActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+         */
+
     }
 
-
     public void connexion(View v){
+        /*
                     String txt_email = email.getText().toString();
                     String txt_password = password.getText().toString();
                     if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)){
@@ -52,6 +95,9 @@ public class MainActivity extends AppCompatActivity  {
                     } else {
                         connecter(txt_email , txt_password);
                     }
+
+         */
+        connecter("aurelie.l@outlook.com","azerty");
     }
 
     private void connecter(String email, String password) {
@@ -69,7 +115,7 @@ public class MainActivity extends AppCompatActivity  {
                                     if (task.isSuccessful()) {
                                         for (QueryDocumentSnapshot document : task.getResult()) {
                                             if(document.getId().equals(mAuth.getCurrentUser().getUid())){
-                                                if((boolean)document.getData().get("Eleveur")==true){
+                                                if((boolean)document.getData().get("eleveur")==true){
                                                     intent.putExtra("Eleveur",true);
                                                 }else{
                                                     intent.putExtra("Eleveur",false);
@@ -99,6 +145,8 @@ public class MainActivity extends AppCompatActivity  {
         Intent intent = new Intent(this, InscrireActivity1.class);
         startActivity(intent);
     }
+
+
 
 
 }

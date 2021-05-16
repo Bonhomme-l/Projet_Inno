@@ -4,7 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AjouterActivity2">
+    tools:context=".activities.ajouter.AjouterActivity2">
+
+    <TextView
+        android:id="@+id/textView41"
+        android:layout_width="0dp"
+        android:layout_height="310dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rectangle_bleu_claire"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
 
     <TextView
         android:id="@+id/textView42"
@@ -15,38 +25,9 @@
         android:layout_marginEnd="50dp"
         android:background="@drawable/rectangle_bleu_fonce"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView41" />
-
-    <TextView
-        android:id="@+id/ajouter_ajouter"
-        android:layout_width="211dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="36dp"
-        android:background="@drawable/bouton_fond_orange"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView42"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="@+id/textView42"
-        app:layout_constraintTop_toBottomOf="@+id/description_ajouter"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/textView43"
-        style="@style/Login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
-        android:text="Ajouter"
-        app:layout_constraintBottom_toBottomOf="@+id/ajouter_ajouter"
-        app:layout_constraintEnd_toEndOf="@+id/ajouter_ajouter"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="@+id/ajouter_ajouter"
-        app:layout_constraintTop_toTopOf="@+id/ajouter_ajouter"
-        app:layout_constraintVertical_bias="0.516" />
+        app:layout_constraintTop_toBottomOf="@+id/recycler_liste_photos_ajouter" />
 
     <TextView
         android:id="@+id/textView40"
@@ -70,17 +51,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView40"
         app:srcCompat="@drawable/ligne" />
 
-    <TextView
-        android:id="@+id/textView41"
-        android:layout_width="0dp"
-        android:layout_height="310dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/rectangle_bleu_claire"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
+
 
     <TextView
         android:id="@+id/textView44"
@@ -109,15 +80,7 @@
         app:layout_constraintStart_toStartOf="@+id/textView42"
         app:layout_constraintTop_toTopOf="@+id/textView42" />
 
-    <ImageView
-        android:id="@+id/imageView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView44"
-        app:layout_constraintStart_toStartOf="@+id/textView44"
-        app:layout_constraintTop_toBottomOf="@+id/textView44"
-        app:srcCompat="@drawable/addphoto" />
+
 
     <EditText
         android:id="@+id/description_ajouter"
@@ -136,5 +99,94 @@
         app:layout_constraintEnd_toEndOf="@+id/textView42"
         app:layout_constraintStart_toStartOf="@+id/textView42"
         app:layout_constraintTop_toBottomOf="@+id/textView45" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_liste_photos_ajouter"
+        android:layout_width="0dp"
+        android:overScrollMode="never"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView41"
+        app:layout_constraintEnd_toEndOf="@+id/textView41"
+        app:layout_constraintStart_toStartOf="@+id/textView41"
+        app:layout_constraintTop_toBottomOf="@+id/ajouter_photo_ajouter2" />
+
+    <ImageView
+        android:id="@+id/afficher_photo_ajouter2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/recycler_liste_photos_ajouter"
+        app:layout_constraintEnd_toEndOf="@+id/textView41"
+        app:layout_constraintStart_toStartOf="@+id/textView41"
+        app:layout_constraintTop_toBottomOf="@+id/textView44" />
+
+    <ImageView
+        android:id="@+id/ajouter_photo_ajouter2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView44"
+        app:layout_constraintStart_toStartOf="@+id/textView44"
+        app:layout_constraintTop_toBottomOf="@+id/textView44"
+        app:srcCompat="@drawable/addphoto" />
+
+    <ImageView
+        android:visibility="invisible"
+        android:id="@+id/ajouter_autre_photo_ajouter2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="92dp"
+        android:src="@drawable/addphoto"
+        app:layout_constraintEnd_toEndOf="@+id/textView41"
+        app:layout_constraintHorizontal_bias="0.949"
+        app:layout_constraintStart_toStartOf="@+id/afficher_photo_ajouter2"
+        app:layout_constraintTop_toTopOf="@+id/afficher_photo_ajouter2" />
+
+    <TextView
+        android:id="@+id/ajouter_ajouter"
+        android:layout_width="211dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/bouton_fond_orange"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView42"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/textView42"
+        app:layout_constraintTop_toBottomOf="@+id/view5"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView43"
+        style="@style/Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:text="Ajouter"
+        app:layout_constraintBottom_toBottomOf="@+id/ajouter_ajouter"
+        app:layout_constraintEnd_toEndOf="@+id/ajouter_ajouter"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="@+id/ajouter_ajouter"
+        app:layout_constraintTop_toTopOf="@+id/ajouter_ajouter"
+        app:layout_constraintVertical_bias="0.516" />
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.784" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

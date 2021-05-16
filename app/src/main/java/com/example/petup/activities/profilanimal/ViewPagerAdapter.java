@@ -1,6 +1,7 @@
-package com.example.petup;
+package com.example.petup.activities.profilanimal;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,14 +21,14 @@ class ViewPagerAdapter extends PagerAdapter {
     Context context;
 
     // Array of images
-    ArrayList<Integer> images;
+    ArrayList<Uri> images;
 
     // Layout Inflater
     LayoutInflater mLayoutInflater;
 
 
     // Viewpager Constructor
-    public ViewPagerAdapter(Context context, ArrayList<Integer> images) {
+    public ViewPagerAdapter(Context context, ArrayList<Uri> images) {
         this.context = context;
         this.images = images;
         mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -48,13 +49,13 @@ class ViewPagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, final int position) {
         // inflating the item.xml
-        View itemView = mLayoutInflater.inflate(R.layout.photos_swipe, container, false);
+        View itemView = mLayoutInflater.inflate(R.layout.item_photos, container, false);
 
         // referencing the image view from the item.xml file
-        ImageView imageView = (ImageView) itemView.findViewById(R.id.imageViewMain);
+        ImageView imageView = (ImageView) itemView.findViewById(R.id.photo);
 
         // setting the image in the imageView
-        imageView.setImageResource(images.get(position));
+        imageView.setImageURI(images.get(position));
 
         // Adding the View
         Objects.requireNonNull(container).addView(itemView);

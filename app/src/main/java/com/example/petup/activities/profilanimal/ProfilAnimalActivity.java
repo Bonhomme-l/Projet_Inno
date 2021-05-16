@@ -1,10 +1,12 @@
-package com.example.petup;
+package com.example.petup.activities.profilanimal;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,8 +14,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 
-import com.example.petup.ui.home.Animal;
+import com.example.petup.HomeActivity;
+import com.example.petup.Profil;
+import com.example.petup.R;
+import com.example.petup.Animal;
 import com.example.petup.ui.home.HomeFragment;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.ListResult;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -21,44 +38,53 @@ import java.util.ArrayList;
 public class ProfilAnimalActivity  extends AppCompatActivity {
     ViewPager mViewPager;
     RecyclerView recycler;
-    ArrayList<Animal> animaux= HomeFragment.dataAnimaux();
-    Animal animal;
 
-    TextView nom, ville, adresse, description;
+    TextView nom, ville, adresse, description,age;
+
+    String id;
+
+    ArrayList<Uri> photos = new ArrayList<>();
 
     ViewPagerAdapter mViewPagerAdapter;
+
+    Animal animal;
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profilanimal);
 
+        db = FirebaseFirestore.getInstance();
+
         nom = findViewById(R.id.prenom_profilanimal);
         ville = findViewById(R.id.ville_profilanimal);
-        adresse = findViewById(R.id.adresse_profilanaimal);
+        age = findViewById(R.id.age_profilanimal);
         description = findViewById(R.id.description_profilanimal);
 
         Intent i = getIntent();
 
-        ArrayList<Integer> photos=new ArrayList<Integer>();
-        photos.add(R.drawable.rectangle_bleu);
-        photos.add(R.drawable.barnavigation_design);
-        int photo_profil=i.getIntExtra("Photo Profil",0);
-        photos.add(photo_profil);
+        id=i.getStringExtra("Id");
 
+        age.setText(i.getStringExtra("Age"));
         nom.setText(i.getStringExtra("Nom"));
         ville.setText(i.getStringExtra("Ville"));
         adresse.setText(i.getStringExtra("Adresse"));
         description.setText(i.getStringExtra("Description"));
 
+
         mViewPager = (ViewPager)findViewById(R.id.viewPagerMain);
-        mViewPagerAdapter = new ViewPagerAdapter(ProfilAnimalActivity.this, photos);
+        mViewPagerAdapter = new ViewPagerAdapter(ProfilAnimalActivity.this, HomeActivity.listePhotos(id));
         mViewPager.setAdapter(mViewPagerAdapter);
 
-        for(Animal a : animaux){
-            if(String.valueOf(a.prenom).equals(i.getStringExtra("Nom"))){
-                animal=a;
+
+        FirebaseFirestore.getInstance().collection("Animaux").document(id).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                animal = documentSnapshot.toObject(Animal.class);
             }
-        }
+        });
 
         recycler = findViewById(R.id.recycle_cate_profilanimal);
         recycler.setHasFixedSize(true);

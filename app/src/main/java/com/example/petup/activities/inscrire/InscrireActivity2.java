@@ -1,4 +1,4 @@
-package com.example.petup;
+package com.example.petup.activities.inscrire;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -15,16 +16,23 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.petup.Profil;
+import com.example.petup.activities.ajouter.AjouterActivity;
+import com.example.petup.HomeActivity;
+import com.example.petup.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
+import com.google.firebase.storage.UploadTask;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,6 +54,10 @@ public class InscrireActivity2 extends AppCompatActivity {
     private String adresse;
     private String ville;
     private String sexe;
+    private String pp_url;
+
+    StorageReference storageRef;
+    private StorageTask uploadTask;
 
     ProgressDialog pd;
 
@@ -66,6 +78,9 @@ public class InscrireActivity2 extends AppCompatActivity {
         adresse=i.getStringExtra("adresse");
         ville=i.getStringExtra("ville");
         sexe=i.getStringExtra("sexe");
+        pp_url=i.getStringExtra("photo_profil_url");
+
+        storageRef = FirebaseStorage.getInstance().getReference();
 
         radioEleveur=findViewById(R.id.eleveur_radio_incrire);
         radioEleveur.setChecked(true);
@@ -75,7 +90,6 @@ public class InscrireActivity2 extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         pd = new ProgressDialog(this);
-        Toast.makeText(InscrireActivity2.this, nom, Toast.LENGTH_SHORT).show();
         inscrire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,16 +125,8 @@ public class InscrireActivity2 extends AppCompatActivity {
                 boolean eleveur;
                 if(radioEleveur.isChecked()) eleveur=true;
                 else eleveur=false;
-
-                Map<String, Object> profil = new HashMap<>();
-                profil.put("Nom", nom);
-                profil.put("Prénom", prenom);
-                profil.put("Date de naissance",date);
-                profil.put("Sexe",sexe );
-                profil.put("Adresse",adresse);
-                profil.put("Ville", ville);
-                profil.put("Eleveur", eleveur);
-                profil.put("Email", email);
+                ArrayList<String> animaux = new  ArrayList<>();
+                Profil profil=new Profil(adresse,animaux,date,eleveur,nom,pp_url,prenom,sexe,ville);
 
                 String id = mAuth.getCurrentUser().getUid();
 
@@ -130,18 +136,30 @@ public class InscrireActivity2 extends AppCompatActivity {
                         if (task.isSuccessful()){
                             pd.dismiss();
                             Toast.makeText(InscrireActivity2.this, "Compte Crée !", Toast.LENGTH_SHORT).show();
+                             if(!pp_url.equals("")){
+                            Uri pp_uri = Uri.parse(pp_url);
+                            StorageReference photo = storageRef.child(id +"/"+ pp_uri.getLastPathSegment());
+                            uploadTask = photo.putFile(pp_uri);
+                            uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                @Override
+                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                }
+                            });
+                             }
 
                             if(eleveur){
                                 AlertDialog.Builder builder = new AlertDialog.Builder(InscrireActivity2.this);
-                                builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                                builder.setMessage("Bienvenu.e sur notre application en tant qu'adopteur ! Voulez-vous ajouter une boule de poils à adopter ?")
+                                        .setIcon(R.drawable.paw_orange)
+                                        .setTitle("Nouvel Utilisateur !")
+                                        .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         Intent intent = new Intent(InscrireActivity2.this , AjouterActivity.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                        intent.putExtra("Id",id);
                                         startActivity(intent);
                                     }
-                                });
-                                builder.setNegativeButton("Plus tard", new DialogInterface.OnClickListener() {
+                                })
+                                .setNegativeButton("Plus tard", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         Intent intent = new Intent(InscrireActivity2.this , HomeActivity.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -152,6 +170,21 @@ public class InscrireActivity2 extends AppCompatActivity {
 
                                 AlertDialog dialog = builder.create();
                                 dialog.show();
+                            }else{
+                                AlertDialog.Builder builder = new AlertDialog.Builder(InscrireActivity2.this);
+                                builder.setMessage("Bienvenu.e ! Vous pouver voir les animaux à adopter proches de chez vous dès maintenant")
+                                        .setIcon(R.drawable.paw_orange)
+                                        .setTitle("Nouvel Utilisateur !")
+                                        .setNegativeButton("D'accord !", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        Intent intent = new Intent(InscrireActivity2.this , HomeActivity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        intent.putExtra("Eleveur",false);
+                                        startActivity(intent);
+                                    }
+                                });
+                                AlertDialog dialog2 = builder.create();
+                                dialog2.show();
                             }
 
                         }
